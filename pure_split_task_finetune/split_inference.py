@@ -53,8 +53,12 @@ def eval_model(args):
     os.makedirs(os.path.dirname(answers_file), exist_ok=True)
     # ans_file = open(answers_file, "w")
     output_result = {}
+    if args.modify_mode:
+        with open(args.old_answers, "r") as f:
+            output_result = json.load(f)
 
     q_types = [("general", args.general_ckpt), ("regional", args.regional_ckpt), ("suggestion", args.suggestion_ckpt)]
+    q_types = [q_types[ids] for ids in args.qtype_choices]
     # Model: general/regional/suggestion
     for qtype in q_types:
         disable_torch_init()
@@ -118,8 +122,11 @@ if __name__ == "__main__":
     parser.add_argument("--suggestion_ckpt", type=str, default="/content/llava-v1.5-7b-task-lora-suggestion/")
     parser.add_argument("--model-base", type=str, default="liuhaotian/llava-v1.5-7b")
     parser.add_argument("--image-folder", type=str, default="")
-    parser.add_argument("--question-file", type=str, default="/content/dataset/test.json")
+    parser.add_argument("--question-file", type=str, default="/content/dataset/test_detected.json")
     parser.add_argument("--answers-file", type=str, default="/content/answer.json")
+    parser.add_argument("--modify_mode", type=bool, default=True)
+    parser.add_argument("--old_answers", type=str, default="/content/submission.json")
+    parser.add_argument("--qtype_choices", type=list, default=[2])
     parser.add_argument("--conv-mode", type=str, default="llava_v1")
     parser.add_argument("--num-chunks", type=int, default=1)
     parser.add_argument("--chunk-idx", type=int, default=0)
