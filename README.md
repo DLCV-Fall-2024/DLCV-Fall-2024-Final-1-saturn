@@ -7,7 +7,7 @@ Run the following command to download dataset from huggingface and generate json
 ```
 python3 data_parser.py  # It takes quite long: about 2 hrs
 ```
-After execution, images of each split (train/val/test) are saved in a folder, and the 3 json files contain the prompts and predictions.
+After execution, outputs will be in "dataset/". Images of each split (train/val/test) are saved in a folder, and the 3 json files contain the prompts and predictions.
 ### Detection (DINO, Depth Anything V2)
 
 ### Generate Depth Maps
@@ -22,12 +22,9 @@ python3 task_split.py
 The original json file is then decomposed into 3 jsons: "general.json", "regional.json" and "suggestion.json"
 
 ## Training
-### Clone LLaVA Official Repo and Install
+### Install
 ```
-git clone https://github.com/haotian-liu/LLaVA.git
 cd LLaVA
-```
-```
 conda create -n llava python=3.10 -y
 conda activate llava
 pip install --upgrade pip  # enable PEP 660 support
@@ -40,7 +37,7 @@ pip install flash-attn --no-build-isolation
 ### Finetuning
 Run the following shell script to train 3 sets of model weights (general, regional and suggestion) in order.
 ```
-bash train.sh <Path to gt image folder> <Path to annot file>
+bash train.sh
 ```
 The checkpoints of the 3 models are saved in "llava-v1.5-7b-task-lora-general/", "llava-v1.5-7b-task-lora-regional/" and "llava-v1.5-7b-task-lora-suggestion/"
 ## Inference
