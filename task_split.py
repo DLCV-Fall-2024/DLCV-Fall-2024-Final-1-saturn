@@ -2,22 +2,28 @@ import os
 import json
 import argparse
 
+"""
+divide images in "train/" into 3 subfolders, "train/general/", "train/regional/" and "train/suggestion/"
+train.json is also splitted into general.json, regional.json and suggestion.json
+
+If --add_val is True (merge val data to train data), images in "val/" are migrated to the 3 subfolders based on question types.
+Samples in val.json are also added to the 3 json files (general.json, regional.json and suggestion.json) in "train/"
+"""
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--image_folder", type=str, default="/content/dataset/train/")
-    parser.add_argument("--json_path", type=str, default="/content/dataset/train.json")
+    parser.add_argument("--image_folder", type=str, default="dataset/train/")
+    parser.add_argument("--json_path", type=str, default="dataset/train.json")
     parser.add_argument("--add_val", type=bool, default=True)
-    parser.add_argument("--extra_image_folder", type=str, default="/content/dataset/val/")
-    parser.add_argument("--extra_json_path", type=str, default="/content/dataset/val.json")
+    parser.add_argument("--extra_image_folder", type=str, default="dataset/val/")
+    parser.add_argument("--extra_json_path", type=str, default="dataset/val.json")
 
     args = parser.parse_args()
 
     task_types = ["general", "regional", "suggestion"]
     lst_general, lst_regional, lst_suggestion = [], [], []
     for task in task_types:
-        os.makedirs(os.path.join(args.image_folder, task), exist_ok=True)
-        if args.add_val:
-            os.makedirs(os.path.join(args.extra_image_folder, task), exist_ok=True)
+        os.makedirs(os.path.join(args.image_folder, task), exist_ok=True)        
 
     with open(args.json_path, "r") as f:
         data_lst = json.load(f)
