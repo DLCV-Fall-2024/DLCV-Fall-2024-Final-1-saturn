@@ -1,7 +1,18 @@
 # DLCV Final Project
 
 # How to run your code?
-* TODO: Please provide the scripts for TAs to reproduce your results, including training and inference. For example, 
+* TODO: Please provide the scripts for TAs to reproduce your results, including training and inference. For example,
+## Data Pre-processing
+### Detection (DINO, Depth Anything V2)
+
+### Generate Depth Maps
+
+### Sort Question Types
+
+## Training
+
+## Inference
+
 
 ```
 bash train.sh <Path to gt image folder> <Path to annot file>
