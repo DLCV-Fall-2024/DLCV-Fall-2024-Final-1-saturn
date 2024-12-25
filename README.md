@@ -9,10 +9,13 @@ python3 data_parser.py  # It takes quite long: about 2 hrs
 ```
 After execution, outputs will be in "dataset/". Images of each split (train/val/test) are saved in a folder, and the 3 json files contain the prompts and predictions.
 ### Detection (DINO, Depth Anything V2)
+TODO: get train_combined.json/val_combined.json/test_combined.json
 
 ### Generate Depth Maps
+TODO: 
 
 ### Add Extra Information (Detection/Depth Map) to Prompts
+TODO: modify train.json/val.json/test.json
 
 ### Sort Question Types
 Run the following command so that training data is divided into subsets based on their question types.
@@ -23,17 +26,20 @@ The original json file is then decomposed into 3 jsons: "general.json", "regiona
 
 ## Training
 ### Install
+Clone the official LLaVA repo and append our customized scripts:
 ```
 git clone https://github.com/haotian-liu/LLaVA.git
 bash move_files.sh
 cd LLaVA
 ```
+Install Package:
 ```
 conda create -n llava python=3.10 -y
 conda activate llava
 pip install --upgrade pip  # enable PEP 660 support
 pip install -e .
 ```
+Install additional packages for training cases:
 ```
 pip install -e ".[train]"
 pip install flash-attn --no-build-isolation
