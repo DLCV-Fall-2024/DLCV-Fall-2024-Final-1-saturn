@@ -3,6 +3,13 @@
 # How to run your code?
 * TODO: Please provide the scripts for TAs to reproduce your results, including training and inference. For example,
 ## Data Pre-processing
+### Download and Change Format
+Run the following command to download dataset from huggingface and generate json files following [LLaVA official repo's](https://github.com/haotian-liu/LLaVA.git) format.
+```
+python3 data_parser.py
+```
+(It takes quite long: about 2 hrs)
+After execution, images of each split (train/val/test) are saved in a folder, and the 3 json files contain the prompts and outputs (except the test split).
 ### Detection (DINO, Depth Anything V2)
 
 ### Generate Depth Maps
@@ -10,7 +17,11 @@
 ### Sort Question Types
 
 ## Training
-
+### Clone LLaVA Official Repo and Install
+```
+git clone https://github.com/haotian-liu/LLaVA.git
+cd LLaVA
+```
 ## Inference
 
 
