@@ -1,0 +1,1 @@
+python3 split_inference.py --image-folder $1 --question-file $2 --answer-file $3

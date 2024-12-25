@@ -24,7 +24,11 @@ The original json file is then decomposed into 3 jsons: "general.json", "regiona
 ## Training
 ### Install
 ```
+git clone https://github.com/haotian-liu/LLaVA.git
+bash move_files.sh
 cd LLaVA
+```
+```
 conda create -n llava python=3.10 -y
 conda activate llava
 pip install --upgrade pip  # enable PEP 660 support
