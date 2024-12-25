@@ -1,20 +1,25 @@
 # DLCV Final Project
 
 # How to run your code?
-* TODO: Please provide the scripts for TAs to reproduce your results, including training and inference. For example,
 ## Data Pre-processing
 ### Download and Change Format
 Run the following command to download dataset from huggingface and generate json files following [LLaVA official repo's](https://github.com/haotian-liu/LLaVA.git) format.
 ```
-python3 data_parser.py
+python3 data_parser.py  # It takes quite long: about 2 hrs
 ```
-(It takes quite long: about 2 hrs)
-After execution, images of each split (train/val/test) are saved in a folder, and the 3 json files contain the prompts and outputs (except the test split).
+After execution, images of each split (train/val/test) are saved in a folder, and the 3 json files contain the prompts and predictions.
 ### Detection (DINO, Depth Anything V2)
 
 ### Generate Depth Maps
 
+### Add Extra Information (Detection/Depth Map) to Prompts
+
 ### Sort Question Types
+Run the following command so that training data is divided into subsets based on their question types.
+```
+python3 task_split.py
+```
+The original json file is then decomposed into 3 jsons: "general.json", "regional.json" and "suggestion.json"
 
 ## Training
 ### Clone LLaVA Official Repo and Install
@@ -22,15 +27,28 @@ After execution, images of each split (train/val/test) are saved in a folder, an
 git clone https://github.com/haotian-liu/LLaVA.git
 cd LLaVA
 ```
-## Inference
-
-
+```
+conda create -n llava python=3.10 -y
+conda activate llava
+pip install --upgrade pip  # enable PEP 660 support
+pip install -e .
+```
+```
+pip install -e ".[train]"
+pip install flash-attn --no-build-isolation
+```
+### Finetuning
+Run the following shell script to train 3 sets of model weights (general, regional and suggestion) in order.
 ```
 bash train.sh <Path to gt image folder> <Path to annot file>
+```
+The checkpoints of the 3 models are saved in "llava-v1.5-7b-task-lora-general/", "llava-v1.5-7b-task-lora-regional/" and "llava-v1.5-7b-task-lora-suggestion/"
+## Inference
+Run the following shell script to get the inference result. Questions in the testing annotation file will first be sorted according to their types, and the 3 checkpoints will be loaded in sequel to generate complete output.
+```
 bash inference.sh <Path to gt image folder> <Path to annot file> <Path to predicted file>
 ```
 
-You can add more arguments to the script if you need.
 
 # Usage
 To start working on this final project, you should clone this repository into your local machine by the following command:
