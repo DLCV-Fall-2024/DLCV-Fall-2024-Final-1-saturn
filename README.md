@@ -1,19 +1,18 @@
 # DLCV Final Project
 
 # How to run your code?
-## Data Pre-processing
-### Download and Change Format
-Please use the following cmd to download our dataset.
-```bash
-./download_dataset.sh # Download image dataset
-./download_ckpt.sh # Download pretrain weight from gdrive
+## Download dataset and model checkpoints
+Please use the following command to download our preprocessed dataset (for training) and model checkpoints (for inference).
 ```
-or You can download dataset from this [link](https://drive.google.com/drive/folders/1B0zK2pS6WClY2Q9_wR4W4DNF2t5u0MaS?usp=drive_link) directly.
+bash download_dataset.sh # Download image dataset
+bash download_ckpt.sh # Download model checkpoints from gdrive
+```
+or you can download dataset from this [link](https://drive.google.com/drive/folders/1B0zK2pS6WClY2Q9_wR4W4DNF2t5u0MaS?usp=drive_link) directly.
 ## Training
-### Install
 ```
 cd LLaVA
 ```
+### Install
 Install Package:
 ```
 conda create -n llava python=3.10 -y
@@ -33,11 +32,15 @@ bash train.sh
 ```
 The checkpoints of the 3 models are saved in "llava-v1.5-7b-task-lora-general/", "llava-v1.5-7b-task-lora-regional/" and "llava-v1.5-7b-task-lora-suggestion/"
 ## Inference
+```
+cd LLaVA
+```
 Run the following shell script to get the inference result. Questions in the testing annotation file will first be sorted according to their types, and the 3 checkpoints will be loaded in sequel to generate complete output.
 ```
-bash inference.sh <Path to gt image folder> <Path to annot file> <Path to predicted file>
+bash inference.sh <Path to test image folder> <Path to test json file> <Path to output prediction file>
 ```
 
+---
 
 # Usage
 To start working on this final project, you should clone this repository into your local machine by the following command:
