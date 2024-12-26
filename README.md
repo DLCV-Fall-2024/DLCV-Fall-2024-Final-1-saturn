@@ -1,4 +1,13 @@
 # DLCV Final Project
+# Introduction
+This challenge addresses the robustness of autonomous driving systems in handling complex and unexpected "corner cases." It focuses on leveraging multimodal data, such as images and text prompts, to enhance perception and understanding. 
+
+The three question types are:
+* General perception, 
+* Regional perception,
+* Driving suggestions.
+
+Our approach involves using task-specific model weights to better distinguish the objectives of the three tasks, ensuring each task is optimized independently. We enhance prompts to improve input quality and integrate depth information into images to provide richer contextual data. 
 
 # How to run your code?
 ## Download dataset and model checkpoints
@@ -23,7 +32,6 @@ pip install -e .
 Install additional packages for training cases:
 ```
 pip install -e ".[train]"
-pip install peft==0.10.0
 pip install flash-attn --no-build-isolation
 ```
 ### Finetuning

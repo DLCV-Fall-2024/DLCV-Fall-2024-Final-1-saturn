@@ -1,1 +1,1 @@
-python3 split_inference.py --image-folder $1 --question-file $2 --answers-file $3
+python3 split_inference.py --image_folder $1 --image_folder_depth $2 --question-file $3 --answers-file $4

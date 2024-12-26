@@ -9,3 +9,8 @@ gdown -O llava-v1.5-7b-task-lora-suggestion.zip 'https://drive.google.com/uc?id=
 unzip llava-v1.5-7b-task-lora-general.zip
 unzip llava-v1.5-7b-task-lora-regional.zip
 unzip llava-v1.5-7b-task-lora-suggestion.zip
+rm llava-v1.5-7b-task-lora-general.zip
+rm llava-v1.5-7b-task-lora-regional.zip
+rm llava-v1.5-7b-task-lora-suggestion.zip
+mv ./content/LLaVA/checkpoints/* ./
+rm -fr ./content/LLaVA/checkpoints
