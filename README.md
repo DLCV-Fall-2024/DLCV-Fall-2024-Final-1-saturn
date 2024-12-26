@@ -23,6 +23,7 @@ pip install -e .
 Install additional packages for training cases:
 ```
 pip install -e ".[train]"
+pip install peft==0.10.0
 pip install flash-attn --no-build-isolation
 ```
 ### Finetuning
