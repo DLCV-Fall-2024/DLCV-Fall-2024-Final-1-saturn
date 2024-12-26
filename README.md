@@ -46,7 +46,7 @@ cd LLaVA
 ```
 Run the following shell script to get the inference result. Questions in the testing annotation file will first be sorted according to their types, and the 3 checkpoints will be loaded in sequel to generate complete output.
 ```
-bash inference.sh <Path to test image folder> <Path to test json file> <Path to output prediction file>
+bash inference.sh <Path to test image folder> <Path to test concat depth folder> <Path to test json file> <Path to output prediction file>
 ```
 
 ---
