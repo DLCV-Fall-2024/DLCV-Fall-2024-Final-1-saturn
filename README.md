@@ -26,10 +26,7 @@ The original json file is then decomposed into 3 jsons: "general.json", "regiona
 
 ## Training
 ### Install
-Clone the official LLaVA repo and append our customized scripts:
 ```
-git clone https://github.com/haotian-liu/LLaVA.git
-bash move_files.sh
 cd LLaVA
 ```
 Install Package:
