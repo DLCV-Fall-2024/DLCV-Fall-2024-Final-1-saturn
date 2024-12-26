@@ -5,7 +5,8 @@
 ### Download and Change Format
 Please use the following cmd to download our dataset.
 ```bash
-./download_dataset.sh
+./download_dataset.sh # Download image dataset
+./download_ckpt.sh # Download pretrain weight from gdrive
 ```
 or You can download dataset from this [link](https://drive.google.com/drive/folders/1B0zK2pS6WClY2Q9_wR4W4DNF2t5u0MaS?usp=drive_link) directly.
 ## Training
