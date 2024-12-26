@@ -9,6 +9,8 @@ The three question types are:
 
 Our approach involves using task-specific model weights to better distinguish the objectives of the three tasks, ensuring each task is optimized independently. We enhance prompts to improve input quality and integrate depth information into images to provide richer contextual data. 
 
+For more information, refer to _poster.pdf_.
+
 # How to run your code?
 ## Download dataset and model checkpoints
 Please use the following command to download our preprocessed dataset (for training) and model checkpoints (for inference).
@@ -32,6 +34,7 @@ pip install -e .
 Install additional packages for training cases:
 ```
 pip install -e ".[train]"
+pip install peft==0.10.0
 pip install flash-attn --no-build-isolation
 ```
 ### Finetuning
