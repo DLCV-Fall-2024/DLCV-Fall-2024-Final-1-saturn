@@ -83,8 +83,10 @@ def eval_model(args):
             prompt = conv.get_prompt()
 
             input_ids = tokenizer_image_token(prompt, tokenizer, IMAGE_TOKEN_INDEX, return_tensors='pt').unsqueeze(0).cuda()
-
-            image = Image.open(os.path.join(image_file)).convert('RGB')
+            if(qtype == "general"):
+                image = Image.open(os.path.join(args.image_folder,image_file)).convert('RGB')
+            else:
+                image = Image.open(os.path.join(args.image_folder_depth,image_file)).convert('RGB')
             image_tensor = process_images([image], image_processor, model.config)[0]
             
             with torch.inference_mode():
@@ -102,9 +104,6 @@ def eval_model(args):
 
             outputs = tokenizer.batch_decode(output_ids, skip_special_tokens=True)[0].strip()
             output_result[idx] = outputs
-            print(prompt)
-            print(outputs)
-            print("=================")
 
         # free cuda memory
         model.cpu()
@@ -121,7 +120,8 @@ if __name__ == "__main__":
     parser.add_argument("--regional_ckpt", type=str, default="../llava-v1.5-7b-task-lora-regional/")
     parser.add_argument("--suggestion_ckpt", type=str, default="../llava-v1.5-7b-task-lora-suggestion/")
     parser.add_argument("--model-base", type=str, default="liuhaotian/llava-v1.5-7b")
-    parser.add_argument("--image-folder", type=str, default="")
+    parser.add_argument("--image_folder", type=str, default="")
+    parser.add_argument("--image_folder_depth", type=str, default="")
     parser.add_argument("--question-file", type=str, default="../dataset/test_detected.json")
     parser.add_argument("--answers-file", type=str, default="../submission.json")
     parser.add_argument("--modify_mode", type=bool, default=False)
