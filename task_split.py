@@ -49,7 +49,7 @@ if __name__ == "__main__":
         
         for data in data_lst:
             data_type = data["id"].split("_")[1]
-            new_image_path = os.path.join(args.extra_image_folder, data_type, data["id"]+".png")
+            new_image_path = os.path.join(args.image_folder, data_type, data["id"]+".png")
             # move image file
             os.rename(data["image"], new_image_path)
             # modify image path in data
