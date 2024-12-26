@@ -3,27 +3,11 @@
 # How to run your code?
 ## Data Pre-processing
 ### Download and Change Format
-Run the following command to download dataset from huggingface and generate json files following [LLaVA official repo's](https://github.com/haotian-liu/LLaVA.git) format.
+Please use the following cmd to download our dataset.
+```bash
+./download_dataset.sh
 ```
-python3 data_parser.py  # It takes quite long: about 2 hrs
-```
-After execution, outputs will be in "dataset/". Images of each split (train/val/test) are saved in a folder, and the 3 json files contain the prompts and predictions.
-### Detection (DINO, Depth Anything V2)
-TODO: get train_combined.json/val_combined.json/test_combined.json
-
-### Generate Depth Maps
-TODO: 
-
-### Add Extra Information (Detection/Depth Map) to Prompts
-TODO: modify train.json/val.json/test.json
-
-### Sort Question Types
-Run the following command so that training data is divided into subsets based on their question types.
-```
-python3 task_split.py
-```
-The original json file is then decomposed into 3 jsons: "general.json", "regional.json" and "suggestion.json"
-
+or You can download dataset from this [link](https://drive.google.com/drive/folders/1B0zK2pS6WClY2Q9_wR4W4DNF2t5u0MaS?usp=drive_link) directly.
 ## Training
 ### Install
 ```
