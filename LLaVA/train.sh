@@ -4,8 +4,8 @@ deepspeed llava/train/train_mem.py \
     --deepspeed ./scripts/zero3.json \
     --model_name_or_path liuhaotian/llava-v1.5-7b \
     --version v1 \
-    --data_path ../training_json/train_general_v4.json \
-    --image_folder ../train_concat_depth \
+    --data_path ../train_json/train_general_v4.json \
+    --image_folder ../train/ \
     --vision_tower openai/clip-vit-large-patch14-336 \
     --mm_projector_type mlp2x_gelu \
     --mm_vision_select_layer -2 \
@@ -41,7 +41,7 @@ deepspeed llava/train/train_mem.py \
     --deepspeed ./scripts/zero3.json \
     --model_name_or_path liuhaotian/llava-v1.5-7b \
     --version v1 \
-    --data_path ../training_json/train_regional_v4.json \
+    --data_path ../train_json/train_regional_v4.json \
     --image_folder ../train_concat_depth/ \
     --vision_tower openai/clip-vit-large-patch14-336 \
     --mm_projector_type mlp2x_gelu \
@@ -78,7 +78,7 @@ deepspeed llava/train/train_mem.py \
     --deepspeed ./scripts/zero3.json \
     --model_name_or_path liuhaotian/llava-v1.5-7b \
     --version v1 \
-    --data_path ../training_json/train_suggestion_v4.json \
+    --data_path ../train_json/train_suggestion_v4.json \
     --image_folder ../train_concat_depth/ \
     --vision_tower openai/clip-vit-large-patch14-336 \
     --mm_projector_type mlp2x_gelu \
